@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al Azhran Luxury Auto Repair | Porsche Audi Bentley Service Dubai</title>
+  <meta name="description" content="Expert Porsche, Audi & Bentley repair and maintenance in Dubai. German specialists. OEM diagnostics. Free pickup & delivery. Call now!">
+  <meta name="keywords" content="Porsche repair Dubai, Audi service Dubai, Bentley maintenance Dubai, German car repair, luxury car service">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Al Azhran Luxury Auto Repair Dubai">
+  <meta property="og:description" content="Expert Porsche, Audi & Bentley service in Dubai. OEM diagnostics, German specialists.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aluksury-auto-repair.vercel.app">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #c8a45c;
+      --primary-dark: #a8883a;
+      --bg-dark: #0d0d0d;
+      --bg-card: #1a1a1a;
+      --bg-section: #111111;
+      --text-white: #ffffff;
+      --text-muted: #999999;
+      --text-body: #cccccc;
+      --accent-gradient: linear-gradient(135deg, #c8a45c, #e8c97a);
+      --font-en: 'Outfit', sans-serif;
+      --font-ar: 'Tajawal', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-en);
+      background: var(--bg-dark);
+      color: var(--text-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Arabic mode */
+    body[dir="rtl"] { font-family: var(--font-ar); }
+    body[dir="rtl"] .en-only { display: none !important; }
+    body[dir="ltr"] .ar-only { display: none !important; }
+
+    a { color: var(--primary); text-decoration: none; transition: all 0.3s; }
+    a:hover { color: var(--primary-dark); }
+    img { max-width: 100%; height: auto; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== LANGUAGE SWITCHER ===== */
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 4px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px;
+      padding: 4px;
+    }
+    .lang-switcher button {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .lang-switcher button.active {
+      background: var(--primary);
+      color: #000;
+    }
+    .lang-switcher button:hover:not(.active) { color: var(--text-white); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-dark);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 600px 400px at 20% 50%, rgba(200,164,92,0.08), transparent),
+        radial-gradient(ellipse 500px 500px at 80% 30%, rgba(200,164,92,0.05), transparent),
+        radial-gradient(circle 300px at 50% 80%, rgba(200,164,92,0.03), transparent);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,164,92,0.12);
+      border: 1px solid rgba(200,164,92,0.25);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .hero-badge span { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-white);
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-gradient);
+      color: #000;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(200,164,92,0.3); color: #000; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--text-white);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-stat h3 { font-size: 28px; font-weight: 800; color: var(--text-white); }
+    .hero-stat h3 span { color: var(--primary); }
+    .hero-stat p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-brand-ring {
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,164,92,0.15);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: ringPulse 4s ease-in-out infinite;
+    }
+    @keyframes ringPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+    .hero-brand-ring::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,164,92,0.08);
+    }
+    .hero-brands {
+      display: flex;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-brand-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-brand-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .hero-brand-item span {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 100px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--bg-section); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.4s;
+    }
+    .service-card:hover { border-color: rgba(200,164,92,0.3); transform: translateY(-4px); }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(200,164,92,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 { font-size: 20px; font-weight: 700; color: var(--text-white); margin-bottom: 12px; }
+    .service-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .service-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(200,164,92,0.08);
+      border: 1px solid rgba(200,164,92,0.15);
+      color: var(--primary);
+    }
+
+    /* ===== WHY US ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+    .why-card:hover { border-color: rgba(200,164,92,0.3); }
+    .why-number {
+      font-size: 40px;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .why-card h3 { font-size: 18px; font-weight: 700; color: var(--text-white); margin-bottom: 10px; }
+    .why-card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    /* ===== BRANDS ===== */
+    .brands { background: var(--bg-section); }
+    .brands-showcase {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .brand-logo {
+      padding: 24px 40px;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      text-align: center;
+      min-width: 160px;
+    }
+    .brand-logo .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .brand-logo p { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: var(--bg-section);
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-box {
+      background: var(--accent-gradient);
+      border-radius: 24px;
+      padding: 64px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box h2 {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 16px;
+    }
+    .cta-box p {
+      font-size: 17px;
+      color: rgba(0,0,0,0.7);
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+    .cta-box .btn-primary {
+      background: #000;
+      color: var(--text-white);
+      font-size: 18px;
+      padding: 18px 48px;
+    }
+    .cta-box .btn-primary:hover { background: #1a1a1a; color: var(--text-white); }
+    .cta-phone {
+      display: block;
+      font-size: 32px;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 8px;
+    }
+    .cta-phone:hover { color: #333; }
+
+    /* ===== CONTACT / LOCATION ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .contact-info h3 { font-size: 22px; font-weight: 700; color: var(--text-white); margin-bottom: 24px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .contact-item .icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: rgba(200,164,92,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .contact-item h4 { font-size: 15px; font-weight: 600; color: var(--text-white); margin-bottom: 4px; }
+    .contact-item p { font-size: 14px; color: var(--text-muted); margin: 0; }
+    .contact-item a { color: var(--primary); }
+    .contact-item a:hover { color: var(--primary-dark); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+    footer p { font-size: 14px; color: var(--text-muted); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero p { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-brand-ring { width: 300px; height: 300px; margin: 0 auto; }
+      .hero-visual { order: -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .cta-phone { font-size: 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero-brand-ring { width: 260px; height: 260px; }
+      .hero-brand-icon { width: 60px; height: 60px; font-size: 20px; }
+      .hero-brands { gap: 20px; }
+      section { padding: 60px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 40px 24px; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; justify-content: center; }
+    }
+  </style>
+</head>
+<body dir="ltr">
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button id="lang-en" class="active" onclick="switchLang('en')">EN</button>
+    <button id="lang-ar" onclick="switchLang('ar')">AR</button>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge"><span></span> <span class="en-only">Open for service</span><span class="ar-only">مفتوح للخدمة</span></div>
+          <h1>
+            <span class="en-only">Expert </span><span class="ar-only">خبراء </span>
+            <span class="highlight">Porsche</span>
+            <span class="en-only">, </span><span class="ar-only"> - </span>
+            <span class="highlight">Audi</span>
+            <span class="en-only"> &amp; </span><span class="ar-only"> و </span>
+            <span class="highlight">Bentley</span>
+            <br class="en-only">
+            <span class="en-only">Repair in Dubai</span>
+            <span class="ar-only">صيانة وتصليح في دبي</span>
+          </h1>
+          <p class="en-only">
+            German-specialist workshop for Porsche, Audi & Bentley. OEM diagnostics, 
+            certified mechanics, and premium service — all at competitive rates.
+          </p>
+          <p class="ar-only">
+            ورشة متخصصة في صيانة وتصليح بورش، أودي وبنتلي. تشخيص إلكتروني متطور، 
+            ميكانيكيون معتمدون، وخدمة فاخرة بأسعار منافسة.
+          </p>
+          <div class="hero-actions">
+            <a href="tel:+971505733543" class="btn-primary">📞 <span class="en-only">Call Now</span><span class="ar-only">اتصل الآن</span></a>
+            <a href="https://wa.me/971505733543" target="_blank" class="btn-outline">💬 <span class="en-only">WhatsApp</span><span class="ar-only">واتساب</span></a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><h3><span>10+</span></h3><p class="en-only">Years Experience</p><p class="ar-only">سنوات خبرة</p></div>
+            <div class="hero-stat"><h3><span>2,000+</span></h3><p class="en-only">Cars Serviced</p><p class="ar-only">سيارة خدمناهم</p></div>
+            <div class="hero-stat"><h3><span>98%</span></h3><p class="en-only">Happy Clients</p><p class="ar-only">عملاء راضون</p></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-brand-ring">
+            <div class="hero-brands">
+              <div class="hero-brand-item">
+                <div class="hero-brand-icon">P</div>
+                <span>Porsche</span>
+              </div>
+              <div class="hero-brand-item">
+                <div class="hero-brand-icon">A</div>
+                <span>Audi</span>
+              </div>
+              <div class="hero-brand-item">
+                <div class="hero-brand-icon">B</div>
+                <span>Bentley</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <span class="section-label">// <span class="en-only">Services</span><span class="ar-only">خدماتنا</span></span>
+      <h2 class="section-title en-only">Complete Care for Your German Machine</h2>
+      <h2 class="section-title ar-only">عناية كاملة لسيارتك الألمانية</h2>
+      <p class="section-subtitle en-only">From routine maintenance to major engine repairs — we handle every system with OEM-level precision.</p>
+      <p class="section-subtitle ar-only">من الصيانة الدورية إلى التصليحات الكبرى — نتعامل مع كل نظام بدقة المصنع.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3 class="en-only">Routine Maintenance</h3><h3 class="ar-only">صيانة دورية</h3>
+          <p class="en-only">Oil changes, filters, belts, spark plugs, and all scheduled services per manufacturer specs.</p>
+          <p class="ar-only">تغيير زيت، فلاتر، سيور، بوجي، وجميع الخدمات الدورية حسب مواصفات المصنع.</p>
+          <div class="service-tags"><span class="service-tag">Porsche</span><span class="service-tag">Audi</span><span class="service-tag">Bentley</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛞</div>
+          <h3 class="en-only">Engine & Transmission</h3><h3 class="ar-only">محرك وجيربوكس</h3>
+          <p class="en-only">Full engine diagnostics, overhaul, transmission repair, and performance tuning.</p>
+          <p class="ar-only">تشخيص كامل للمحرك، عمرة، تصليح جيربوكس، وضبط أداء.</p>
+          <div class="service-tags"><span class="service-tag">Engine</span><span class="service-tag">Transmission</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛑</div>
+          <h3 class="en-only">Brakes & Suspension</h3><h3 class="ar-only">فرامل وتعليق</h3>
+          <p class="en-only">Brake pad replacement, rotor resurfacing, suspension bushings, shocks, and alignment.</p>
+          <p class="ar-only">تبديل فرامل، صيانة معلق، مساعدات، وضبط زوايا.</p>
+          <div class="service-tags"><span class="service-tag">Brakes</span><span class="service-tag">Suspension</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">❄️</div>
+          <h3 class="en-only">AC & Electrical</h3><h3 class="ar-only">تكييف وكهرباء</h3>
+          <p class="en-only">AC repair, compressor replacement, electrical diagnostics, sensor replacement, and wiring.</p>
+          <p class="ar-only">تصليح تكييف، تغيير كومبروسر، تشخيص كهرباء، حساسات، وتمديدات.</p>
+          <div class="service-tags"><span class="service-tag">AC</span><span class="service-tag">Electrical</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3 class="en-only">OEM Diagnostics</h3><h3 class="ar-only">تشخيص إلكتروني</h3>
+          <p class="en-only">Factory-grade PIWIS, ODIS, and VAS diagnostic systems for accurate fault finding.</p>
+          <p class="ar-only">أجهزة تشخيص مصنعية PIWIS, ODIS, VAS لتحديد الأعطال بدقة.</p>
+          <div class="service-tags"><span class="service-tag">PIWIS</span><span class="service-tag">ODIS</span><span class="service-tag">VAS</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3 class="en-only">Body & Paint</h3><h3 class="ar-only">سمكرة ودهان</h3>
+          <p class="en-only">Minor body repairs, paint touch-ups, and full resprays matched to OEM colour codes.</p>
+          <p class="ar-only">تصليح سمكرة بسيطة، لمسات دهان، ودهان كامل حسب رموز ألوان المصنع.</p>
+          <div class="service-tags"><span class="service-tag">Body</span><span class="service-tag">Paint</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section id="why">
+    <div class="container">
+      <span class="section-label">// <span class="en-only">Why Choose Us</span><span class="ar-only">لماذا نحن</span></span>
+      <h2 class="section-title en-only">The Al Azhran Difference</h2>
+      <h2 class="section-title ar-only">فرق العزهران</h2>
+      <p class="section-subtitle en-only">We treat your car like it's our own. Here's why clients trust us.</p>
+      <p class="section-subtitle ar-only">نعامل سيارتك وكأنها سيارتنا. لهذا يثق بنا العملاء.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-number">01</div>
+          <h3 class="en-only">German Specialists</h3><h3 class="ar-only">متخصصون ألمان</h3>
+          <p class="en-only">Our mechanics are certified in Porsche, Audi & Bentley systems with years of dealership experience.</p>
+          <p class="ar-only">ميكانيكيونا معتمدون في أنظمة بورش، أودي وبنتلي مع خبرة وكالة.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">02</div>
+          <h3 class="en-only">OEM Equipment</h3><h3 class="ar-only">معدات المصنع</h3>
+          <p class="en-only">Factory diagnostic tools (PIWIS, ODIS, VAS) ensure every repair meets manufacturer standards.</p>
+          <p class="ar-only">أجهزة تشخيص المصنع (PIWIS, ODIS, VAS) تضمن إصلاح بمستوى الوكالة.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">03</div>
+          <h3 class="en-only">Transparent Pricing</h3><h3 class="ar-only">أسعار شفافة</h3>
+          <p class="en-only">No hidden fees. You approve all work before we start. Competitive rates vs. dealership.</p>
+          <p class="ar-only">مصروفات مخفية. توافق على كل الأعمال قبل البدء. أسعار منافسة مقارنة بالوكالة.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">04</div>
+          <h3 class="en-only">Free Pickup & Delivery</h3><h3 class="ar-only">توصيل مجاني</h3>
+          <p class="en-only">We collect your car from anywhere in Dubai and return it when done. Hassle-free.</p>
+          <p class="ar-only">نستلم سيارتك من أي مكان في دبي ونعيدها بعد الإصلاح. بدون متاعب.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRANDS ===== -->
+  <section class="brands" id="brands">
+    <div class="container">
+      <span class="section-label">// <span class="en-only">Our Expertise</span><span class="ar-only">خبرتنا</span></span>
+      <h2 class="section-title en-only">We Specialize In</h2>
+      <h2 class="section-title ar-only">نتخصص في</h2>
+      <p class="section-subtitle en-only">Years of experience across Germany's finest automotive brands.</p>
+      <p class="section-subtitle ar-only">سنوات خبرة مع أفضل الماركات الألمانية.</p>
+      <div class="brands-showcase">
+        <div class="brand-logo"><div class="brand-name">Porsche</div><p class="en-only">911, Cayenne, Macan, Panamera, Cayman</p><p class="ar-only">911، كايين، ماكان، باناميرا، كايمان</p></div>
+        <div class="brand-logo"><div class="brand-name">Audi</div><p class="en-only">A3–A8, Q3–Q8, RS, R8, e-tron</p><p class="ar-only">A3–A8، Q3–Q8، RS، R8، e-tron</p></div>
+        <div class="brand-logo"><div class="brand-name">Bentley</div><p class="en-only">Continental GT, Flying Spur, Bentayga, Mulsanne</p><p class="ar-only">كونتننتال، فلاينغ سبير، بنتايجا، مولسان</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2 class="en-only">Book Your Service Today</h2>
+        <h2 class="ar-only">احجز موعد صيانتك اليوم</h2>
+        <p class="en-only">Call us or send a WhatsApp message. Free pickup & delivery across Dubai.</p>
+        <p class="ar-only">اتصل بنا أو أرسل واتساب. توصيل واستلام مجاني في جميع أنحاء دبي.</p>
+        <a href="tel:+971505733543" class="cta-phone">+971 50 573 3543</a>
+        <div style="display:flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:+971505733543" class="btn-primary">📞 <span class="en-only">Call Now</span><span class="ar-only">اتصل الآن</span></a>
+          <a href="https://wa.me/971505733543" target="_blank" class="btn-primary" style="background:#000; color:white;">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-label">// <span class="en-only">Contact</span><span class="ar-only">اتصل بنا</span></span>
+      <h2 class="section-title en-only">Get In Touch</h2>
+      <h2 class="section-title ar-only">تواصل معنا</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 class="en-only">Visit Our Workshop</h3>
+          <h3 class="ar-only">زور ورشتنا</h3>
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div>
+              <h4 class="en-only">Location</h4><h4 class="ar-only">الموقع</h4>
+              <p>Al Quoz Industrial Area 3, Dubai, UAE</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📞</div>
+            <div>
+              <h4 class="en-only">Phone</h4><h4 class="ar-only">هاتف</h4>
+              <a href="tel:+971505733543">+971 50 573 3543</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">💬</div>
+            <div>
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/971505733543" target="_blank">+971 50 573 3543</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">🕐</div>
+            <div>
+              <h4 class="en-only">Working Hours</h4><h4 class="ar-only">ساعات العمل</h4>
+              <p class="en-only">Sat–Thu: 8:00 AM – 8:00 PM<br>Fri: Closed</p>
+              <p class="ar-only">السبت–الخميس: 8:00 صباحاً – 8:00 مساءً<br>الجمعة: مغلق</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="en-only">Send Us a Message</h3>
+          <h3 class="ar-only">أرسل لنا رسالة</h3>
+          <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 24px;" class="en-only">
+            Prefer to write? Click below to send us a WhatsApp message directly.
+          </p>
+          <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 24px;" class="ar-only">
+            تفضل بالكتابة؟ اضغط أدناه لإرسال رسالة واتساب مباشرة.
+          </p>
+          <a href="https://wa.me/971505733543?text=Hi!%20I%27d%20like%20to%20book%20a%20service%20for%20my%20car." target="_blank" class="btn-primary" style="background: #25D366; color: white; border: none;">
+            💬 <span class="en-only">Message on WhatsApp</span><span class="ar-only">رسالة واتساب</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p class="en-only">&copy; 2026 Al Azhran Luxury Auto Repair. All rights reserved. | Al Quoz, Dubai</p>
+      <p class="ar-only">&copy; 2026 العزهران لصيانة السيارات الفاخرة. جميع الحقوق محفوظة. | القوز، دبي</p>
+    </div>
+  </footer>
+
+  <script>
+    function switchLang(lang) {
+      const html = document.documentElement;
+      const body = document.body;
+      const enBtn = document.getElementById('lang-en');
+      const arBtn = document.getElementById('lang-ar');
+      
+      if (lang === 'ar') {
+        html.setAttribute('lang', 'ar');
+        html.setAttribute('dir', 'rtl');
+        body.setAttribute('dir', 'rtl');
+        enBtn.classList.remove('active');
+        arBtn.classList.add('active');
+        document.title = 'العزهران لصيانة السيارات الفاخرة | بورش أودي بنتلي دبي';
+      } else {
+        html.setAttribute('lang', 'en');
+        html.setAttribute('dir', 'ltr');
+        body.setAttribute('dir', 'ltr');
+        arBtn.classList.remove('active');
+        enBtn.classList.add('active');
+        document.title = 'Al Azhran Luxury Auto Repair | Porsche Audi Bentley Dubai';
+      }
+    }
+  </script>
+</body>
+</html>
