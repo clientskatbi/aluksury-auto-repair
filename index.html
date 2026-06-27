@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+<!-- Google Ads Global Site Tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18268967907"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18268967907');
+</script>
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Al Azhran Luxury Auto Repair | Porsche Audi Bentley Service Dubai</title>
@@ -1334,5 +1344,34 @@
       }
     }
   </script>
+
+<script>
+// Track phone call clicks
+document.addEventListener('click', function(e) {
+  var target = e.target.closest('a[href*="tel:"]');
+  if (target) {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18268967907/PHONE_CALL',
+      'event_callback': function() {
+        console.log('Phone call conversion tracked');
+      }
+    });
+  }
+});
+
+// Track WhatsApp clicks
+document.addEventListener('click', function(e) {
+  var target = e.target.closest('a[href*="wa.me"]');
+  if (target) {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18268967907/WHATSAPP',
+      'event_callback': function() {
+        console.log('WhatsApp conversion tracked');
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>
