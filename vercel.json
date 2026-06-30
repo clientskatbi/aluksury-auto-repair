@@ -2,5 +2,14 @@
   "version": 2,
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/porsche", "destination": "/index.html" },
+    { "source": "/audi", "destination": "/index.html" },
+    { "source": "/bentley", "destination": "/index.html" },
+    { "source": "/ar", "destination": "/index.html" },
+    { "source": "/ar/porsche", "destination": "/index.html" },
+    { "source": "/ar/audi", "destination": "/index.html" },
+    { "source": "/ar/bentley", "destination": "/index.html" }
+  ]
 }

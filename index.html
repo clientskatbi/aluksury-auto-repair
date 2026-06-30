@@ -1321,6 +1321,49 @@
   </footer>
 
   <script>
+    // URL-based routing for brand/country pages
+    (function() {
+      var path = window.location.pathname.replace(/\/+$/, '') || '/';
+      var parts = path.split('/').filter(Boolean);
+      var needAr = false;
+      var targetBrand = null;
+
+      if (parts[0] === 'ar') {
+        needAr = true;
+        if (parts[1] && ['porsche','audi','bentley'].indexOf(parts[1]) !== -1) {
+          targetBrand = parts[1];
+        }
+      } else if (parts[0] && ['porsche','audi','bentley'].indexOf(parts[0]) !== -1) {
+        targetBrand = parts[0];
+      }
+
+      // Set language on load
+      if (targetBrand && needAr) { switchLang('ar'); }
+      else if (targetBrand) { switchLang('en'); }
+      else if (needAr) { switchLang('ar'); }
+
+      // Scroll to brand section after page loads
+      if (targetBrand) {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            var brandsSection = document.getElementById('brands');
+            if (brandsSection) {
+              brandsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Highlight the matching brand card
+            var brandCards = document.querySelectorAll('.brand-card');
+            for (var i = 0; i < brandCards.length; i++) {
+              var nameEl = brandCards[i].querySelector('.brand-name');
+              if (nameEl && nameEl.textContent.trim().toLowerCase() === targetBrand) {
+                brandCards[i].style.borderColor = 'var(--gold)';
+                brandCards[i].style.boxShadow = '0 0 30px rgba(200,164,92,0.3)';
+              }
+            }
+          }, 300);
+        });
+      }
+    })();
+
     function switchLang(lang) {
       const html = document.documentElement;
       const body = document.body;
